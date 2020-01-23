@@ -29,11 +29,11 @@ discriminatory_tests <- function(df, total_observations, dr_observation, dr_esti
            CUM_GOOD_RATE_OBS = cumsum(GOOD_RATE_OBS),
            KS = CUM_GOOD_RATE_OBS - CUM_BAD_RATE_OBS,
            GINI = case_when(row_number() == 1 ~ CUM_BAD_RATE_OBS * CUM_GOOD_RATE_OBS,
-                            TRUE              ~ (CUM_BAD_RATE_OBS+lag(CUM_BAD_RATE_OBS) * (CUM_GOOD_RATE_OBS-lag(CUM_GOOD_RATE_OBS)))))
+                            TRUE              ~ (CUM_BAD_RATE_OBS+lag(CUM_BAD_RATE_OBS)) * (CUM_GOOD_RATE_OBS-lag(CUM_GOOD_RATE_OBS)) ) )
 
   res_discriminatory <- res_df %>%
-    summarise(KS = sum(KS),
-              GINI = sum(GINI)) %>%
+    summarise(KS = max(KS),
+              GINI = 1-sum(GINI)) %>%
     mutate(KS_RESULT = case_when(KS < 0.35  ~ "Reject",
                                  TRUE       ~ "Accept"),
            GINI_RESULT = case_when(GINI < 0.40  ~ "Weak",
