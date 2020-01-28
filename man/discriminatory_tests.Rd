@@ -4,13 +4,7 @@
 \alias{discriminatory_tests}
 \title{Discriminatory tests}
 \usage{
-discriminatory_tests(
-  df,
-  total_observations,
-  dr_observation,
-  dr_estimate,
-  simplfy = T
-)
+discriminatory_tests(df, total_observations, dr_observation, simplfy = T)
 }
 \arguments{
 \item{df}{A data.frame (tibble)}
@@ -18,8 +12,6 @@ discriminatory_tests(
 \item{total_observations}{The column name of total observations variable. (character)}
 
 \item{dr_observation}{The column name of bad observation rate variable. (character)}
-
-\item{dr_estimate}{The column name of bad estimate rate variable. (character)}
 
 \item{simplfy}{(logical, Default is TRUE)}
 }

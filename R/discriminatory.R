@@ -5,19 +5,17 @@
 #' @param df A data.frame (tibble)
 #' @param total_observations The column name of total observations variable. (character)
 #' @param dr_observation The column name of bad observation rate variable. (character)
-#' @param dr_estimate The column name of bad estimate rate variable. (character)
 #' @param simplfy (logical, Default is TRUE)
 #'
 #' @import dplyr
 #' @import tibble
 #' @importFrom magrittr %<>%
 #' @export
-discriminatory_tests <- function(df, total_observations, dr_observation, dr_estimate, simplfy=T) {
+discriminatory_tests <- function(df, total_observations, dr_observation, simplfy=T) {
 
   #create column variable
   expr_total_obs <- sym(total_observations)
   expr_dr_obs <- sym(dr_observation)
-  expr_dr_est <- sym(dr_estimate)
 
   #crate calculation
   res_df <- df %>%
