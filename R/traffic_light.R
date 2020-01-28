@@ -23,9 +23,9 @@ traffic_light_tests <- function(df, total_observations, dr_observation, dr_estim
   #create calculation
   res <- df %>%
     mutate(COUNT_BAD_OBS = !!expr_dr_obs * !!expr_total_obs,
-           BINOM_TEST = 1 - pbinom(size = !!expr_total_obs - 1,
+           BINOM_TEST = 1 - pbinom(size = !!expr_total_obs,
                                    prob = !!expr_dr_est,
-                                   q = COUNT_BAD_OBS),
+                                   q = COUNT_BAD_OBS - 1),
            NORMAL_TEST = 1 - pnorm((COUNT_BAD_OBS - 0.5 - !!expr_dr_est * !!expr_total_obs) / sqrt(!!expr_dr_est * (1 - !!expr_dr_est) * !!expr_total_obs)),
            CORRELATED_TEST =  pnorm((qnorm(!!expr_dr_est) - qnorm(!!expr_dr_obs) * (1 - rho)^0.5) / rho^0.5))
 
