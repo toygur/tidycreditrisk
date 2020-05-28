@@ -66,8 +66,9 @@ herfindahl_hirschman_index_table <- function(df, df_column="DATA", total_observa
     mutate(HHI = map(!!expr_df, ~herfindahl_hirschman_index(.x, total_observations=total_observations, trace = F, simplfy = F))) %>%
     unnest_wider(HHI) %>%
     mutate(HHI = map_dbl(HHI, ~pull(.x)),
-           RESULT = case_when(HHI < 0.20  ~ "No Concentration",
-                              HHI <= 0.30 ~ "Low Concentration",
+           RESULT = case_when(HHI < 0.01  ~ "No Any Concentration",
+                              HHI < 0.15  ~ "No Concentration",
+                              HHI <= 0.25 ~ "Low Concentration",
                               TRUE        ~ "High Concentration"))
 
   if(simplfy) res %<>% select(-HHI_DETAIL)

@@ -6,15 +6,15 @@ Authors@R:
     c(person(given = "Tunc",
              family = "Oygur",
              role = c("aut", "cre"),
-             email = "toygur@kpmg.com"),
+             email = "info@tuncoygur.com.tr"),
       person(given = "Arda",
              family = "Keskin",
               role = c("aut"),
-             email = "ardakeskin@kpmg.com"),
+             email = "ardakeskin94@gmail.com"),
       person(given = 'Mustafa',
              family = 'Nayansak',
              role = c('aut'),
-             email = 'mnayansak@kpmg.com'))
+             email = 'mustafanayansakk@gmail.com'))
 Description: Credit risk analytics toolkit
 Depends: 
     R (>= 3.5)
